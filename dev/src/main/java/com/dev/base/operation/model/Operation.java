@@ -2,6 +2,7 @@ package com.dev.base.operation.model;
 
 /**
  * Created by zhjx on 2018/7/18.
+ * 页面中功能项对象
  */
 public class Operation {
 
@@ -9,12 +10,12 @@ public class Operation {
     private String name; //'功能项名称',
     private String url; //'请求访问地址',
     private int matchType; //'标记请求地址类型，1完整路径；2正则表达式',
-    private int oper_type; //'功能项类型1菜单，2普通超链接，3修改、删除等功能按钮提交地址',
+    private int operType; //'功能项类型1菜单，2普通超链接，3修改、删除等功能按钮提交地址',
     private String eleId ;  //'在页面中元素id',
     private int parentId ;   //'父级id',
     private String remark ;//'备注',
     private String createTime ;  //
-    private String update_time ;
+    private String updateTime ;
 
     public int getId() {
         return id;
@@ -48,13 +49,7 @@ public class Operation {
         this.matchType = matchType;
     }
 
-    public int getOper_type() {
-        return oper_type;
-    }
 
-    public void setOper_type(int oper_type) {
-        this.oper_type = oper_type;
-    }
 
     public String getEleId() {
         return eleId;
@@ -88,11 +83,19 @@ public class Operation {
         this.createTime = createTime;
     }
 
-    public String getUpdate_time() {
-        return update_time;
+    public int getOperType() {
+        return operType;
     }
 
-    public void setUpdate_time(String update_time) {
-        this.update_time = update_time;
+    public void setOperType(int operType) {
+        this.operType = operType;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }
