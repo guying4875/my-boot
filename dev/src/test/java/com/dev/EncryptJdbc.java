@@ -1,6 +1,5 @@
 package com.dev;
 
-import com.alibaba.druid.filter.config.ConfigTools;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -12,20 +11,20 @@ import java.security.NoSuchProviderException;
 public class EncryptJdbc {
 
     public static void main(String[] args){
-        String password = "12345678";
-        String[] arr = new String[0];
-        try {
-            arr = ConfigTools.genKeyPair(512);
-            System.out.println("privateKey:" + arr[0]);
-            System.out.println("publicKey:" + arr[1]);
-            System.out.println("password:" + ConfigTools.encrypt(arr[0], password));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        String password = "12345678";
+//        String[] arr = new String[0];
+//        try {
+//            arr = ConfigTools.genKeyPair(512);
+//            System.out.println("privateKey:" + arr[0]);
+//            System.out.println("publicKey:" + arr[1]);
+//            System.out.println("password:" + ConfigTools.encrypt(arr[0], password));
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchProviderException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
     }
 

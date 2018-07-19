@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  *
  */
 @SpringBootApplication
-@PropertySource(value ={"jdbc.properties","init.properties"},encoding = "utf-8")
+@PropertySource(value ={"mvc.properties"},encoding = "utf-8")
 public class SpringBootApp
 {
 

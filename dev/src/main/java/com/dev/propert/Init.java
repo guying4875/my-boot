@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by zhjx on 2018/7/17.
  */
-@ConfigurationProperties("init")
+//@ConfigurationProperties("init")
 public class Init {
     private String url;
 
