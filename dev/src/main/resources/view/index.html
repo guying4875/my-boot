@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<br xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
 </head>
-<body>
-<h2>用户列表dddd</h2>
+<br>
+<h2>thymeleaf使用验证</h2>
+<p>2.1 简单表达式</p>
+<p>2.1.1 变量表达式</p>
+"${key}" = <span th:text="${key}"></span> </br>
+"*{key}" = <span th:text="*{key}"></span></br>
+"${user.name}" = <span th:text="${user.name}"></span></br>
+"*{user.name}" = <span th:text="*{user.name}"></span></br>
+
+<p>2.1.2 链接表达式@{....}</p>
+"@{http://www.baidu.com} -- 全路径" = <a href ="xixox.com" th:href="@{http://localhost:8081/dev}">超链接1</a></br>
+"@{index/def} -- 页面相对路径" = <a href ="xixox.com" th:href="@{index/def}">超链接2</a></br>
+"@{/index/def} -- 上下文相对路径" = <a href ="xixox.com" th:href="@{/index/def}">超链接3</a></br>
+"@{~/index/def} -- servlet-relative路径" = <a href ="xixox.com" th:href="@{~/index/def}">超链接3</a></br>
+"@{//index/def} -- 协议相关网站" = <a href ="xixox.com" th:href="@{//index/def}">超链接3</a></br>
+"@{http://localhost:8081/dev/{id}/(id=${key})} -- 路径中带有参数" = <a href ="xixox.com" th:href="@{http://localhost:8081/dev/{id}/(id=${key})}" th:text="${id}">超链接3</a></br>
+"@{http://localhost:8081/dev/query/(id=${key})} -- 带参数url" = <a href ="xixox.com" th:href="@{http://localhost:8081/dev/query/(id=${key})}" th:text="${id}">超链接3</a></br>
+"@{http://localhost:8081/dev/query/(id=${key})(key=${key})} -- 多参数url" = <a href ="xixox.com" th:href="@{http://localhost:8081/dev/query/(id=${key},key=${id})}" th:text="${id}">超链接3</a></br>
+
+
+
+<p>2.2 文本</p>
+纯文本内容 <span th:text="真实内容">模板内容</span></br>
+数字 <span th:text="9">模板内容</span></br>
+数字运算 <span th:text="9+4">模板内容</span></br>
+bool运算1==3 <span th:if="1==3">假</span></br>
+bool运算1==1 <span th:if="1==1">真</span></br>
+判断${id}为空 <span th:if="${id}==null">真</span></br>
+判断${id}为非空 <span th:if="${id}!=null">真</span></br>
+
+th:class="my_class"  === <span th:class="my_class">真</span></br>
+
+
+<p>2.3 字符操作</p>
+
+'拼接内容'+'拼接'  == <span th:text="'拼接内容'+'拼接'">真</span></br>
+
+key=+${key} 字符串与变量拼接 == <span th:text="'key='+ ${key}">真</span></br>
+key=+${key} 字符串与变量拼接 == <span th:text="'key='+ ${key}">真</span></br>
+
+
+<p>2.5 逻辑运算符</p>
+
+'and'使用 ${key} != null and ${id} != null  == <span th:text="${key} != null and ${id} != null">真</span></br>
+'or'使用 ${key} != null or ${name} != null  == <span th:text="${key} != null or ${name} != null">真</span></br>
+&nbsp;
+<span>此处使用了内置对象list的方法</span></br>
+判断list为空 <span th:text="${#lists.isEmpty(notEmptyList)}">真</span></br>
+if 判断list为空 <span th:if="${#lists.isEmpty(notEmptyList)}">为真显示</span></br>
+判断list非空 <span th:text="${!#lists.isEmpty(notEmptyList)}">为假不显示</span></br>
+if  判断list非空 <span th:if="${!#lists.isEmpty(notEmptyList)}">为假不显示</span></br>
+
+<span>比较运算符</span></br>
+<ol>
+    <li>>(gt)：<span th:text="1+1" th:if="${#lists.size(notEmptyList)} > 1">大于></span>else</li>
+    <li>小于lt：<span th:if="${#lists.size(notEmptyList)} lt 1">小于</span>else</li>
+    <li>>=(ge)：<span  th:if="${#lists.size(notEmptyList)} >= 1">大于等于>=</span>else</li>
+    <li>小于等于(le)：<span  th:if="${#lists.size(notEmptyList)} le 1">小于等于</span>else</li>
+    <li>!(not)：<span  th:if="${!#lists.isEmpty(notEmptyList)}">!(not)</span>else</li>
+    <li>==(eq)：<span th:text="'Execution mode is ' + ( (${key} == 'dev')? 'Development' : 'Production')">等于==</span></li>
+    <li>!=(ne/neq)：size:<span th:text="${#lists.size(notEmptyList)}" th:if="${#lists.size(notEmptyList)} != 1"></span></li>
+</ol>
+
+
+<p>2.1.4 片段表达示 ～{...}</p>
+
+
+
 <div>
     <ul>
         <li  th:each="user:${users}">
