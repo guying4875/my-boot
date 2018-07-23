@@ -90,7 +90,8 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <configuration>
-            <jvmArguments>dd=uu</jvmArguments>
+            <fork>true</fork>
+            <addResources>true</addResources>
           </configuration>
         </plugin>
 
