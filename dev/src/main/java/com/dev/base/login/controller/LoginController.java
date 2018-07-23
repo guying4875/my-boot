@@ -43,7 +43,7 @@ public class LoginController {
 
         view.addObject("notEmptyList",strList);
         view.addObject("emptyList",new ArrayList<>());
-        view.setViewName("index");
+        view.setViewName("index/index");
         return view;
     }
 }
