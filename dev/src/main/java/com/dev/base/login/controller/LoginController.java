@@ -46,4 +46,10 @@ public class LoginController {
         view.setViewName("index/index");
         return view;
     }
+
+    @RequestMapping("/index")
+    public ModelAndView index(ModelAndView view){
+        view.setViewName("index/index");
+        return view;
+    }
 }
