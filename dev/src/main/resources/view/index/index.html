@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout/layout-default" >
+      th:replace="layout/layout" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,7 +10,7 @@
 
     <!-- Today status. jQuery Sparkline plugin used. -->
 
-    <div class="row" layout:fragment="content" th:text="变更内容">
+    <div class="row" th:fragment="content" th:text="变更内容">
         测试内容
     </div>
 
