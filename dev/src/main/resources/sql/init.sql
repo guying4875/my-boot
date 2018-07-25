@@ -33,6 +33,7 @@ CREATE TABLE base_role (
   name VARCHAR(50) NOT NULL COMMENT '角色名',
   comment VARCHAR(50) NULL COMMENT '说明',
   status INT NULL COMMENT '状态1.启用，2停用',
+  system_code varchar(50) DEFAULT 'default' COMMENT '系统简称',
   create_time DATETIME NOT NULL DEFAULT now(),
   PRIMARY KEY (id))
 ENGINE = InnoDB
@@ -56,6 +57,7 @@ CREATE TABLE base_dict_type (
   id INT NOT NULL,
   name VARCHAR(50) NOT NULL COMMENT '字典类型名称',
   type_code VARCHAR(50) NOT NULL COMMENT '字典类型编码',
+  system_code varchar(50) DEFAULT 'default' COMMENT '系统简称',
   create_time DATETIME NOT NULL DEFAULT now(),
   PRIMARY KEY (id))
 ENGINE = InnoDB
@@ -70,6 +72,7 @@ CREATE TABLE base_dict (
   dict_value VARCHAR(300) NOT NULL COMMENT '字典--值',
   parent_id int comment '父项id',
   comment VARCHAR(300) NULL COMMENT '说明',
+  system_code varchar(50) DEFAULT 'default' COMMENT '系统简称',
   create_time DATETIME NOT NULL DEFAULT now(),
   PRIMARY KEY (id))
 ENGINE = InnoDB

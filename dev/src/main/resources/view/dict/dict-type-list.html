@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="layout/layout">
 <head>
@@ -16,83 +15,66 @@
             <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body" >
-        <div class="layui-row">
-            <form class="layui-form ">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">多规则验证</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">验证日期</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">验证链接</label>
-                        <div class="layui-input-inline">
-                            <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>查询</button>
+        <form class="layui-form " th:action="@{/dicttype/showlist}">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">类型名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-            </form>
-        </div>
-        <xblock>
-            <button class="layui-btn layui-btn-danger" ><i class="layui-icon"></i>批量删除</button>
-            <button class="layui-btn" id="but-add"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>增加</button>
-            <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+                <div class="layui-inline">
+                    <label class="layui-form-label">类型编码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="date"  lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">所属系统</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>查询</button>
+                </div>
+            </div>
+        </form>
+        <xblock style="height:40px">
+            <div class="layui-btn-group x-right">
+                <button class="layui-btn">增加</button>
+                <button class="layui-btn">批量删除</button>
+            </div>
         </xblock>
-        <table class="layui-table">
+
+        <table class="layui-table" lay-size="lg"  lay-filter="dict-type-list">
             <thead>
             <tr>
-                <th>
-                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-                </th>
-                <th>ID</th>
-                <th>权限规则</th>
-                <th>权限名称</th>
-                <th>所属分类</th>
-                <th>操作</th>
+                <th  lay-data="{type:'checkbox',field:'id'}"></th>
+                <th lay-data="{field:'name'}">字典类型名称</th>
+                <th lay-data="{field:'typeCode', edit:true }">字典类型编码</th>
+                <th lay-data="{field:'systemCode'  }" >所属系统</th>
+                <th lay-data="{field:'createTime' ,sort:true }" >创建时间</th>
+                <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#th-opt'}">操作</th>
             </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-                </td>
-                <td>1</td>
-                <td>admin/user/userlist</td>
-                <td>会员列表</td>
-                <td>会员相关</td>
-                <td class="td-manage">
-                    <a title="编辑"  onclick="x_admin_show('编辑','xxx.html')" href="javascript:;">
-                        <i class="layui-icon">&#xe642;</i>
-                    </a>
-                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                        <i class="layui-icon">&#xe640;</i>
-                    </a>
-                </td>
-            </tr>
+            <tbody >
+                <tr th:each="dictType:${dicttypelist}">
+                    <td th:text="*{dictType.id}"></td>
+                    <td th:text="*{dictType.name}">*{dictType.name}</td>
+                    <td th:text="*{dictType.typeCode}">*{dictType.typeCode}</td>
+                    <td th:text="*{dictType.systemCode}">*{dictType.systemCode}</td>
+                    <td th:text="*{#dates.format(dictType.createTime,'yyyy-MM-dd HH:mm:ss')}">*{dictType.createTime}</td>
+                    <td> 操作</td>
+                </tr>
             </tbody>
         </table>
-        <div class="page">
-            <div>
-                <a class="prev" href="">&lt;&lt;</a>
-                <a class="num" href="">1</a>
-                <span class="current">2</span>
-                <a class="num" href="">3</a>
-                <a class="num" href="">489</a>
-                <a class="next" href="">&gt;&gt;</a>
-            </div>
-        </div>
+        <script type="text/html" id="th-opt">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-hide" lay-event="save">保存</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
     </div>
 
-    <div th:include="dict/dict-type-add::add">11111111</div>
     <script src="" th:src="@{/static/js/dict/dict-type-list.js}" charset="utf-8"></script>
 </body>
 </html>

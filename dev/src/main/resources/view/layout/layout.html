@@ -22,7 +22,7 @@
 <body>
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="#">X-admin v2.0</a></div>
+        <div class="logo"><a href="#">dev</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
@@ -30,9 +30,9 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">+新增</a>
                 <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                    <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
-                    <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
-                    <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+                    <dd><a onclick="x_admin_show('资讯','')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+                    <dd><a onclick="x_admin_show('图片','')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+                    <dd><a onclick="x_admin_show('用户','')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
                 </dl>
             </li>
         </ul>
@@ -40,8 +40,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">admin</a>
                 <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                    <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-                    <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                    <dd><a onclick="x_admin_show('个人信息','')">个人信息</a></dd>
+                    <dd><a onclick="x_admin_show('切换帐号','')">切换帐号</a></dd>
                     <dd><a href="./login.html">退出</a></dd>
                 </dl>
             </li>
@@ -186,7 +186,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin-list.html" th:href="@{/dicttype/list}">
+                            <a href="admin-list.html" th:href="@{/dicttype/showlist}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 <cite>字典类型管理</cite>
                             </a>
