@@ -26,17 +26,17 @@ public class DictTypeController {
     @RequestMapping("showlist")
     public ModelAndView toListView(){
         ModelAndView view = new ModelAndView("dict/dict-type-list");
-//        List<DictTypeVo> list = new ArrayList<>();
-//        for (int i =1; i<4; i++){
-//            DictTypeVo dt = new DictTypeVo();
-//            dt.setId(i);
-//            dt.setName("name"+i);
-//            dt.setTypeCode("typecode"+i);
-//            dt.setSystemCode("systemcode"+i);
-//            dt.setCreateTime(new Date());
-//            list.add(dt);
-//        }
-//        view.addObject("dicttypelist",list);
+        List<DictTypeVo> list = new ArrayList<>();
+        for (int i =1; i<4; i++){
+            DictTypeVo dt = new DictTypeVo();
+            dt.setId(i);
+            dt.setName("name"+i);
+            dt.setTypeCode("typecode"+i);
+            dt.setSystemCode("systemcode"+i);
+            dt.setCreateTime(new Date());
+            list.add(dt);
+        }
+        view.addObject("dicttypelist",list);
         return view;
     }
 

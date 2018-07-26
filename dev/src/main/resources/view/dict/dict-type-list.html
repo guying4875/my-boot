@@ -5,76 +5,96 @@
     <title>数据字典类型管理</title>
 </head>
 <body th:fragment="content">
-    <div class="x-nav">
-          <span class="layui-breadcrumb" style="visibility: visible;">
-              <a href="/">首页</a><span lay-separator="">/</span>
-              <a href="/demo/">演示</a><span lay-separator="">/</span>
-              <a><cite>导航元素</cite></a>
-          </span>
-        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-            <i class="layui-icon" style="line-height:30px">ဂ</i></a>
-    </div>
-    <div class="x-body" >
-        <form class="layui-form " th:action="@{/dicttype/showlist}">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">类型名称</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
+
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">列表</li>
+            <li>添加</li>
+            <li class="layui-disable">修改</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--/** 列表页 开始  */-->
+            <div class="layui-tab-item layui-show">
+                <div class="layui-card">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="dict-type-query-filter">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">类型名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">类型编码</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="typeCode" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">所属系统</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="systemCode" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="LAY-user-back-search">
+                                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">类型编码</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="date"  lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
+
+                    <div class="layui-card-body">
+                        <div style="padding-bottom: 10px;">
+                            <button class="layui-btn layuiadmin-btn-admin" data-type="batchdel">批量删除</button>
+                            <button class="layui-btn layuiadmin-btn-admin" data-type="add">添加</button>
+                        </div>
+
+                        <script type="text/html" id="dict-type-tool">
+                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </script>
+
+                        <table lay-filter="dict-type-filter">
+                            <thead>
+                                <tr>
+                                    <th lay-data="{field:'id',type:'checkbox',fixed: 'left'}"></th>
+                                    <th lay-data="{field:'name'}">类型名称</th>
+                                    <th lay-data="{field:'typeCode'}">类型编码</th>
+                                    <th lay-data="{field:'systemCode'}">所属系统</th>
+                                    <th lay-data="{field:'createTime'}">创建时间</th>
+                                    <th lay-data="{fixed:'right'，align:'center', toolbar:'#dict-type-tool'}">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody th:each="item:${dicttypelist}">
+                                <tr>
+                                    <td th:text="*{item.id}">1</td>
+                                    <td th:text="*{item.name}">2016-11-30</td>
+                                    <td th:text="*{item.typeCode}">人生就像是一场修行</td>
+                                    <td th:text="*{item.systemCode}">2016-11-30</td>
+                                    <td th:text="*{item.createTime}">人生就像是一场修行</td>
+                                    <td>
+                                        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
                     </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">所属系统</label>
-                    <div class="layui-input-inline">
-                        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>查询</button>
                 </div>
             </div>
-        </form>
-        <xblock style="height:40px">
-            <div class="layui-btn-group x-right">
-                <button class="layui-btn">增加</button>
-                <button class="layui-btn">批量删除</button>
-            </div>
-        </xblock>
-
-        <table class="layui-table" lay-size="lg"  lay-filter="dict-type-list">
-            <thead>
-            <tr>
-                <th  lay-data="{type:'checkbox',field:'id'}"></th>
-                <th lay-data="{field:'name'}">字典类型名称</th>
-                <th lay-data="{field:'typeCode', edit:true }">字典类型编码</th>
-                <th lay-data="{field:'systemCode'  }" >所属系统</th>
-                <th lay-data="{field:'createTime' ,sort:true }" >创建时间</th>
-                <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#th-opt'}">操作</th>
-            </thead>
-            <tbody >
-                <tr th:each="dictType:${dicttypelist}">
-                    <td th:text="*{dictType.id}"></td>
-                    <td th:text="*{dictType.name}">*{dictType.name}</td>
-                    <td th:text="*{dictType.typeCode}">*{dictType.typeCode}</td>
-                    <td th:text="*{dictType.systemCode}">*{dictType.systemCode}</td>
-                    <td th:text="*{#dates.format(dictType.createTime,'yyyy-MM-dd HH:mm:ss')}">*{dictType.createTime}</td>
-                    <td> 操作</td>
-                </tr>
-            </tbody>
-        </table>
-        <script type="text/html" id="th-opt">
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-xs layui-hide" lay-event="save">保存</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        </script>
+            <!--/** 列表页 结束  */-->
+            <!--/** 添加页 开始  */-->
+            <div class="layui-tab-item">内容2</div>
+            <!--/** 列表页 结束  */-->
+            <!--/** 列表页 开始  */-->
+            <div class="layui-tab-item">内容3</div>
+            <!--/** 列表页 结束  */-->
+        </div>
     </div>
-
-    <script src="" th:src="@{/static/js/dict/dict-type-list.js}" charset="utf-8"></script>
+    <script src="" th:src="@{/static/js/base/dict/dict-type-list.js}" charset="utf-8"></script>
 </body>
+
 </html>
