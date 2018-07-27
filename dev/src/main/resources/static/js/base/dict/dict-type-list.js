@@ -1,10 +1,21 @@
 $(function (){
     var contextPath = $("#context-path").val();
-    layui.use('table', function(){
-        var table = layui.table;
+    var queryUrl = $("#dict-type-form").attr("action");
+    //引入必要的模块
+    layui.use(['table','form'], function(){
+        var dictTypeTable = layui.table;
+        var dictTypeQueryForm = layui.form;
         var setting =
             {
-            url:contextPath+"/dicttype/querylist",
+            url:'/dicttype/querylist',
+            cols:  [[ //标题栏
+                {field:'id',type:'checkbox',fixed: 'left'},
+                {field:'name',title:'类型名称'},
+                {field:'typeCode',title:'类型编码'},
+                {field:'systemCode',title:'所属系统'},
+                {field:'createTime',title:'创建时间'},
+                {fixed:'right',align:'center', toolbar:'#dict-type-tool',title:"操作"}
+            ]],
             limit:5,
             method:"get",
             page:true,
@@ -21,7 +32,7 @@ $(function (){
                 }
             };
         //转化静态表格
-        table.init('dict-type-filter', setting);
+        dictTypeTable.render('dict-type-table-filter', setting);
     });
 
 })

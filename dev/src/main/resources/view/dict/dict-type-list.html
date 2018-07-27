@@ -16,32 +16,34 @@
             <!--/** 列表页 开始  */-->
             <div class="layui-tab-item layui-show">
                 <div class="layui-card">
-                    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="dict-type-query-filter">
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">类型名称</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="name" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto" >
+                        <form class="layui-form" action="" id="dict-type-form" th:action="@{/dicttype/querylist}" lay-filter="dict-type-form-filter">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">类型名称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" placeholder="请输入" autocomplete="on" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">类型编码</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="typeCode" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">所属系统</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="systemCode" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="dict-type-but-search">
+                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">类型编码</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="typeCode" placeholder="请输入" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">所属系统</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="systemCode" placeholder="请输入" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <button class="layui-btn layuiadmin-btn-admin" lay-submit="" lay-filter="LAY-user-back-search">
-                                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
 
                     <div class="layui-card-body">
@@ -55,30 +57,8 @@
                             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
                         </script>
 
-                        <table lay-filter="dict-type-filter">
-                            <thead>
-                                <tr>
-                                    <th lay-data="{field:'id',type:'checkbox',fixed: 'left'}"></th>
-                                    <th lay-data="{field:'name'}">类型名称</th>
-                                    <th lay-data="{field:'typeCode'}">类型编码</th>
-                                    <th lay-data="{field:'systemCode'}">所属系统</th>
-                                    <th lay-data="{field:'createTime'}">创建时间</th>
-                                    <th lay-data="{fixed:'right'，align:'center', toolbar:'#dict-type-tool'}">操作</th>
-                                </tr>
-                            </thead>
-                            <tbody th:each="item:${dicttypelist}">
-                                <tr>
-                                    <td th:text="*{item.id}">1</td>
-                                    <td th:text="*{item.name}">2016-11-30</td>
-                                    <td th:text="*{item.typeCode}">人生就像是一场修行</td>
-                                    <td th:text="*{item.systemCode}">2016-11-30</td>
-                                    <td th:text="*{item.createTime}">人生就像是一场修行</td>
-                                    <td>
-                                        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <table lay-filter="dict-type-table-filter">
+
                         </table>
 
 
@@ -87,10 +67,18 @@
             </div>
             <!--/** 列表页 结束  */-->
             <!--/** 添加页 开始  */-->
-            <div class="layui-tab-item">内容2</div>
+            <div class="layui-tab-item">
+                <div class="layui-card">
+                    内容2
+                </div>
+            </div>
             <!--/** 列表页 结束  */-->
             <!--/** 列表页 开始  */-->
-            <div class="layui-tab-item">内容3</div>
+            <div class="layui-tab-item">
+                <div class="layui-card">
+                    内容3
+                </div>
+            </div>
             <!--/** 列表页 结束  */-->
         </div>
     </div>
