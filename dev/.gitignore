@@ -8,5 +8,5 @@
 out
 gen
 /target/*
-/.idea/*
+*/.idea/*
 */.idea/libraries/*
