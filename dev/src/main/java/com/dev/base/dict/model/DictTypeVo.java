@@ -18,6 +18,7 @@ public class DictTypeVo {
     private String name ; //'字典类型名称',
     private String typeCode ;   //'字典类型编码',
     private String systemCode ;  // '所属系统简称',
+    private Long createTimeLong ;   //'系统时间'
 
     private Date createTime ;
 
@@ -59,5 +60,13 @@ public class DictTypeVo {
 
     public void setSystemCode(String systemCode) {
         this.systemCode = systemCode;
+    }
+
+    public Long getCreateTimeLong() {
+        return this.createTime.getTime();
+    }
+
+    public void setCreateTimeLong(Long createTimeLong) {
+        this.createTimeLong = createTimeLong;
     }
 }

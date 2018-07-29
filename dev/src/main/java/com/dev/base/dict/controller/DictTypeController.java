@@ -52,7 +52,7 @@ public class DictTypeController {
         for (int i =11; i<16; i++){
             DictTypeVo dt = new DictTypeVo();
             dt.setId(i);
-            dt.setName("name"+i);
+            dt.setName("刷新"+i);
             dt.setTypeCode("typecode"+i);
             dt.setSystemCode("systemcode"+i);
             dt.setCreateTime(new Date());
