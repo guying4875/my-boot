@@ -2,10 +2,10 @@ package com.dev.base.dict.controller;
 
 import com.dev.base.dict.model.DictTypeVo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
@@ -64,4 +64,35 @@ public class DictTypeController {
         map.put("rows",list);
         return map;
     }
+    /**
+     * 查询字典类型列表数据
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/remove",method= RequestMethod.POST)
+    public Map removeDictType(HttpServletRequest request){
+        String id= request.getParameter("id");
+        System.out.println(id);
+        Map m = new HashMap();
+        m.put("status","succ");
+        return m;
+    }
+
+    /**
+     * 查询字典类型列表数据
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("query/{id}")
+    public DictTypeVo queryDictType(@PathVariable("id") Integer id){
+        System.out.println(id);
+        DictTypeVo dt = new DictTypeVo();
+        dt.setId(id);
+        dt.setName("刷新"+id);
+        dt.setTypeCode("typecode"+id);
+        dt.setSystemCode("systemcode"+id);
+        dt.setCreateTime(new Date());
+        return dt;
+    }
+
 }

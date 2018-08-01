@@ -8,9 +8,9 @@
 
     <div class="layui-tab " lay-filter="dict-type-tab">
         <ul class="layui-tab-title">
-            <li class="layui-this layui-bg-green">列表</li>
-            <li>添加</li>
-            <li class="layui-disable">修改</li>
+            <li class="layui-this " lay-id="tab-list">列表</li>
+            <li lay-id="tab-add" class="layui-bg-green" >添加</li>
+            <!--<li lay-id="tab-edit" >编辑</li>-->
         </ul>
         <div class="layui-tab-content">
             <!--/** 列表页 开始  */-->
@@ -55,7 +55,7 @@
                         <script type="text/html" id="dict-type-tool">
                             <div class="layui-table-cell laytable-cell-20-8">
                                 <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
-                                <a class="layui-btn  layui-btn-xs"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                                <a class="layui-btn  layui-btn-xs" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
                             </div>
                         </script>
 
@@ -75,13 +75,13 @@
                 </div>
             </div>
             <!--/** 列表页 结束  */-->
-            <!--/** 列表页 开始  */-->
-            <div class="layui-tab-item">
-                <div class="layui-card">
-                    <div th:include="dict/dict-type-edit::edit">修改页面</div>
-                </div>
-            </div>
-            <!--/** 列表页 结束  */-->
+            <!--/** 修改页 开始  */-->
+            <!--<div class="layui-tab-item">-->
+                <!--<div class="layui-card">-->
+                    <!--<div th:include="dict/dict-type-edit::edit">修改页面</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--/** 修改页 结束  */-->
         </div>
     </div>
     <script src="" th:src="@{/static/js/base/dict/dict-type-list.js}" charset="utf-8"></script>

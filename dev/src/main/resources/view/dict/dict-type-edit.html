@@ -9,11 +9,11 @@
     <div class="layui-form layui-card-header layuiadmin-card-header-auto" >
         <div class="layui-form" id="dict-type-edit" lay-filter="dict-type-edit-filter">
             <div class="layui-form-item">
-                <label for="dicttype" class="layui-form-label">
+                <label for="name" class="layui-form-label">
                     <span class="x-red">*</span>字典类型
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="dicttype" name="dicttype" required="" lay-verify="required"
+                    <input type="text" id="name" name="name" required=""
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label for="typecode" class="layui-form-label">
+                <label for="typeCode" class="layui-form-label">
                     <span class="x-red">*</span>类型编码
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="typecode" name="typecode" required="" lay-verify="phone"
+                    <input type="text" id="typeCode" name="typeCode" required=""
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -33,11 +33,11 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label for="remark" class="layui-form-label">
-                    备注
+                <label for="systemCode" class="layui-form-label">
+                    所属系统
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="remark" name="remark" required="" lay-verify="email"
+                    <input type="text" id="systemCode" name="systemCode" required=""
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -46,11 +46,8 @@
             </div>
 
             <div class="layui-form-item">
-                <label  class="layui-form-label">
-                </label>
-                <button  class="layui-btn" lay-filter="add" lay-submit="">
-                    增加
-                </button>
+                <label  class="layui-form-label"></label>
+                <button  class="layui-btn" lay-filter="add" lay-submit="">增加</button>
             </div>
         </div>
     </div>
