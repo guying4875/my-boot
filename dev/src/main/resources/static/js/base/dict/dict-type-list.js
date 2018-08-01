@@ -61,9 +61,10 @@ $(function (){
                     $.post(contextPath+"dicttype/remove",{"id":id},function (result){
                         if (result.status == "succ"){  //删除成功从新加载列表内容
                             layer.close(index);
-                            dictTypeTable.reload('dict-type-table-id', {page:{
-                                curr: 1 //重新从第 1 页开始
-                            },where: searchField});
+                            // dictTypeTable.reload('dict-type-table-id', {page:{
+                            //     curr: 1 //重新从第 1 页开始
+                            // },where: searchField});
+                            $("#dict-type-search-id").click();
                         }
                     },"json");
 
