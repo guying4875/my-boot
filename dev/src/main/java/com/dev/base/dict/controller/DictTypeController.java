@@ -1,5 +1,6 @@
 package com.dev.base.dict.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dev.base.dict.model.DictTypeVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -93,6 +94,18 @@ public class DictTypeController {
         dt.setSystemCode("systemcode"+id);
         dt.setCreateTime(new Date());
         return dt;
+    }
+
+    /**
+     * 查询字典类型列表数据
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value="add",method = RequestMethod.POST)
+    public int addDictType(DictTypeVo dictTypeVo){
+        System.out.println(JSONObject.toJSONString(dictTypeVo));
+
+        return 1;
     }
 
 }

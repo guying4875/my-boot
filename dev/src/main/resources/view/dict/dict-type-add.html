@@ -7,7 +7,7 @@
 </head>
 <body th:fragment="add">
     <div class="layui-form layui-card-header layuiadmin-card-header-auto" >
-        <div class="layui-form" id="dict-type-add" lay-filter="dict-type-add-filter">
+        <form class="layui-form" id="dict-type-add-form" action="" th:action="@{/dicttype/}" lay-filter="dict-type-add-filter">
             <div class="layui-form-item">
                 <label for="dicttype" class="layui-form-label">
                     <span class="x-red">*</span>字典类型
@@ -25,7 +25,7 @@
                     <span class="x-red">*</span>类型编码
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="typecode" name="typecode" required="" lay-verify="phone"
+                    <input type="text" id="typecode" name="typecode" required=""
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -37,7 +37,7 @@
                     备注
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="remark" name="remark" required="" lay-verify="email"
+                    <input type="text" id="remark" name="remark" required=""
                            autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -48,11 +48,11 @@
             <div class="layui-form-item">
                 <label  class="layui-form-label">
                 </label>
-                <button  class="layui-btn" lay-filter="add" lay-submit="">
+                <button  class="layui-btn" lay-filter="dict-type-add-but" lay-submit="">
                     增加
                 </button>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
