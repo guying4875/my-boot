@@ -15,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @PropertySource(value ={"mvc.properties"},encoding = "utf-8")
 @EnableEurekaClient
+@EnableFeignClients
 public class SpringBootApp
 {
 
